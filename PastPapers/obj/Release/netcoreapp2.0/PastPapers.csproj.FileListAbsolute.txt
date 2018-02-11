@@ -1,0 +1,11 @@
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\bin\Release\netcoreapp2.0\PastPapers.deps.json
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\bin\Release\netcoreapp2.0\PastPapers.runtimeconfig.json
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\bin\Release\netcoreapp2.0\PastPapers.runtimeconfig.dev.json
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\bin\Release\netcoreapp2.0\PastPapers.dll
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\bin\Release\netcoreapp2.0\PastPapers.pdb
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.csprojResolveAssemblyReference.cache
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.csproj.CoreCompileInputs.cache
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.AssemblyInfoInputs.cache
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.AssemblyInfo.cs
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.dll
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.pdb

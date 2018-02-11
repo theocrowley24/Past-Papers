@@ -1,0 +1,135 @@
+﻿@model PastPapers.Models.HomeModel
+
+@using PastPapers.Objects
+
+@{
+    
+    ViewData["Title"] = "Home";
+}
+
+<link rel="stylesheet" href="~/css/Home.css" />
+
+<div id="addPastPaperModal" class="add-past-paper-modal">
+    <div class="add-past-paper-modal-content">
+        <span class="close">&times;</span>
+        <div class="form-parent">
+            <form asp-controller="Home" asp-action="AddPastPaper" method="post">
+                <div class="input-parent">
+                    <label for="Subject">Subject</label><br />
+                    <input asp-for="Subject" type="text" id="Subject" placeholder="Subject" required />
+                </div>
+                <div class="input-parent">
+                    <label for="Module">Module</label><br />
+                    <input asp-for="Module" type="text" id="Module" placeholder="Topic/Module" required />
+                </div>
+                <div class="input-parent">
+                    <label for="Month">Month</label><br />
+                    <input asp-for="Month" type="text" id="Month" placeholder="Month" required />
+                </div>
+                <div class="input-parent">
+                    <label for="Year">Year</label><br />
+                    <input asp-for="Year" type="text" id="Year" placeholder="Year" required />
+                </div>
+                <div class="input-parent">
+                    <label for="Mark">Mark</label><br />
+                    <input asp-for="Mark" type="number" id="Mark" placeholder="Mark" required />
+                </div>
+                <div class="input-parent">
+                    <label for="MaxMark">Max Mark</label><br />
+                    <input asp-for="MaxMark" type="number" id="Max Mark" placeholder="Max Mark" required />
+                </div>
+                <div class="input-parent">
+                    <label for="Grade">Grade</label><br />
+                    <input asp-for="Grade" type="text" id="Grade" placeholder="Grade" required />
+                </div>
+                <div class="input-parent">
+                    <label for="DateCompleted">Date Completed</label><br />
+                    <input asp-for="DateCompleted" type="date" id="DateCompleted" placeholder="" required />
+                </div>
+                <div class="form-submit-parent"><input type="submit" value="Add paper" /></div>
+</form>
+        </div>
+    </div>
+</div>
+
+<div class="add-past-paper-button">
+    <button id="addButton">Add Paper</button>
+</div>
+
+@if (Model.AddPaperFailed && Model.AddPaperErrorMessage != null)
+{
+    <div class="alert" style="margin-left: 50px;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        @Html.Raw(Model.AddPaperErrorMessage)
+    </div>
+}
+
+<div class="table-parent">
+
+    <form asp-controller="home" asp-action="index" method="get">
+        <div class="number-of-papers-dropdown">
+            <select asp-for="NumberOfPapersToDisplay" onchange="this.form.submit()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+    </form>
+
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Topic/Module</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Mark</th>
+            <th>Max Mark</th>
+            <th>Percentage</th>
+            <th>Grade</th>
+            <th>Date Completed</th>
+        </tr>
+        @{
+            List<PastPaper> papers =  Model.GetPapers();
+            foreach (var paper in papers)
+            {
+                <tr>
+                    <td>@Html.Raw(paper.subject)</td>
+                    <td>@Html.Raw(paper.module)</td>
+                    <td>@Html.Raw(paper.month)</td>
+                    <td>@Html.Raw(paper.year)</td>
+                    <td>@Html.Raw(paper.mark)</td>
+                    <td>@Html.Raw(paper.maxMark)</td>
+                    <td>@Html.Raw(paper.percentage)</td>
+                    <td>@Html.Raw(paper.grade)</td>
+                    <td>@Html.Raw(paper.dateCompleted)</td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
+
+<script>
+
+    var pastPaperModal = document.getElementById("addPastPaperModal");
+    var addButton = document.getElementById("addButton");
+    var closeSpan = document.getElementsByClassName("close")[0];
+
+    addButton.onclick = function () {
+        pastPaperModal.style.display = "block";
+
+    }
+
+    closeSpan.onclick = function () {
+        pastPaperModal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == pastPaperModal) {
+            pastPaperModal.style.display = "none";
+
+        }
+    }
+
+</script>

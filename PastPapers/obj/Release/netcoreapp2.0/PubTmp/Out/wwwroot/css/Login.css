@@ -1,0 +1,63 @@
+﻿body {
+    background: radial-gradient(circle, #03A9F4, #0288D1);
+}
+
+.master-parent {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.tab-bar {
+    height: 50px;
+    width: 300px;
+    background-color: #252d38;
+}
+
+.tab-bar-button {
+    height: 95%;
+    width: 30%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: #fff;
+    background-color: #252d38;
+    border: none;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    font-size: 15pt;
+}
+
+.tab-bar-button:hover {
+    background-color: #fff;
+    color: #212121;
+    border: none;
+}
+
+.tab-content {
+    height: auto;
+    width: 300px;
+    background-color:#fff;
+}
+
+.form-parent input {
+    padding: 10px;
+    margin: 10px;
+    font-size: 15pt;
+    border: solid #BDBDBD;
+    border-width: 0 0 1px 0;
+}
+
+.form-submit-parent {
+    text-align: center;
+}
+
+.form-parent input[type=submit]{
+    background-color: #03A9F4;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    width: 70%;
+}
+

@@ -1,0 +1,78 @@
+﻿
+@model PastPapers.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Login.css" />
+</head>
+
+<body>
+    <div class="master-parent">
+        <div class="tab-bar">
+            <button class="tab-bar-button" onclick="openTab('login')">Login</button>
+            <button class="tab-bar-button" onclick="openTab('register')">Register</button>
+        </div>
+
+        <div id="login" class="tab-content">
+            <div class="form-parent">
+                <form asp-controller="Login" asp-action="AttemptLogin" method="post">
+                    <input asp-for="Username" type="text" placeholder="Username" required/>
+                    <input asp-for="Password" type="password" placeholder="Password" required/>
+                    <div class="form-submit-parent"><input type="submit" value="Login" /></div>
+                </form>
+            </div>
+        </div>
+
+        <div id="register" class="tab-content" style="display:none">
+            <div class="form-parent">
+                <form asp-controller="Login" asp-action="AttemptRegister" method="post">
+                    <input asp-for="NewUsername" type="text" placeholder="Username" required/>
+                    <input asp-for="NewEmail" type="email" placeholder="Email" required/>
+                    <input asp-for="NewPassword" type="password" placeholder="Password" required/>
+                    <div class="form-submit-parent"><input type="submit" value="Register" /></div>
+                </form>
+            </div>
+        </div>
+
+        @if (!Model.LoginSuccess && Model.LoginErrorMessage != null)
+        {
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                @Html.Raw(Model.LoginErrorMessage)
+            </div>
+        }
+        @if (!Model.RegisterSuccess && Model.RegisterErrorMessage != null)
+        {
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                @Html.Raw(Model.RegisterErrorMessage)
+            </div>
+        }
+    </div>  
+</body>
+</html>
+
+<script>
+    function openTab(tabName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("tab-content");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-bar-button");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" red", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " red";
+    }
+</script>

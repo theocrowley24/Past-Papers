@@ -1,0 +1,9 @@
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=PastPapers
+--content-root=C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers
+--file=C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\Views\Home\Index.cshtml
+--file=C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\Views\Login\index.cshtml
+--file=C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\Views\Shared\_Layout.cshtml
+--file=C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\Views\_ViewImports.cshtml
+--file=C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\Views\_ViewStart.cshtml
