@@ -3,11 +3,13 @@
 @using PastPapers.Objects
 
 @{
-    
+
     ViewData["Title"] = "Home";
 }
 
 <link rel="stylesheet" href="~/css/Home.css" />
+
+@{Model.GetGraphData();}
 
 <div id="addPastPaperModal" class="add-past-paper-modal">
     <div class="add-past-paper-modal-content">
@@ -90,7 +92,7 @@
             <th>Date Completed</th>
         </tr>
         @{
-            List<PastPaper> papers =  Model.GetPapers();
+            List<PastPaper> papers = Model.GetPapers();
             foreach (var paper in papers)
             {
                 <tr>

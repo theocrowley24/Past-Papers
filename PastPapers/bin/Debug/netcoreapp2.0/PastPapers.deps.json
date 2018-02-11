@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "8be4455f40c23f6c05404e458ce2d5e3f163e319"
+    "signature": "17229acbde4cdd6abeaf08d5b46cd9ff9ae62b91"
   },
   "compilationOptions": {
     "defines": [
@@ -23,6 +23,7 @@
     ".NETCoreApp,Version=v2.0": {
       "PastPapers/1.0.0": {
         "dependencies": {
+          "DotNet.Highcharts": "4.0.0",
           "MailKit": "2.0.1",
           "Microsoft.AspNetCore.All": "2.0.0",
           "Microsoft.AspNetCore.Session": "2.0.1",
@@ -36,6 +37,14 @@
         },
         "compile": {
           "PastPapers.dll": {}
+        }
+      },
+      "DotNet.Highcharts/4.0.0": {
+        "runtime": {
+          "lib/DotNet.Highcharts.dll": {}
+        },
+        "compile": {
+          "lib/DotNet.Highcharts.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4411,6 +4420,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DotNet.Highcharts/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MnMMTUQXqoOMPN8GRMWniMm15nqbIAUVS+S8biXPbJW3z2fwz1Fxd5x08uQ5KvZB4+5LskYBOSEtYl00/Z2wMQ==",
+      "path": "dotnet.highcharts/4.0.0",
+      "hashPath": "dotnet.highcharts.4.0.0.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",

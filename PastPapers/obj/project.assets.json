@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "DotNet.Highcharts/4.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/DotNet.Highcharts.dll": {}
+        },
+        "runtime": {
+          "lib/DotNet.Highcharts.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -5292,6 +5301,49 @@
     }
   },
   "libraries": {
+    "DotNet.Highcharts/4.0.0": {
+      "sha512": "MnMMTUQXqoOMPN8GRMWniMm15nqbIAUVS+S8biXPbJW3z2fwz1Fxd5x08uQ5KvZB4+5LskYBOSEtYl00/Z2wMQ==",
+      "type": "package",
+      "path": "dotnet.highcharts/4.0.0",
+      "files": [
+        "content/Scripts/Highcharts-4.0.1/js/adapters/standalone-framework.js",
+        "content/Scripts/Highcharts-4.0.1/js/adapters/standalone-framework.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/highcharts-3d.js",
+        "content/Scripts/Highcharts-4.0.1/js/highcharts-3d.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/highcharts-all.js",
+        "content/Scripts/Highcharts-4.0.1/js/highcharts-more.js",
+        "content/Scripts/Highcharts-4.0.1/js/highcharts-more.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/highcharts.js",
+        "content/Scripts/Highcharts-4.0.1/js/highcharts.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/canvas-tools.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/canvas-tools.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/data.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/data.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/drilldown.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/drilldown.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/exporting.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/exporting.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/funnel.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/funnel.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/heatmap.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/heatmap.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/no-data-to-display.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/no-data-to-display.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/solid-gauge.js",
+        "content/Scripts/Highcharts-4.0.1/js/modules/solid-gauge.src.js",
+        "content/Scripts/Highcharts-4.0.1/js/themes/dark-blue.js",
+        "content/Scripts/Highcharts-4.0.1/js/themes/dark-green.js",
+        "content/Scripts/Highcharts-4.0.1/js/themes/dark-unica.js",
+        "content/Scripts/Highcharts-4.0.1/js/themes/gray.js",
+        "content/Scripts/Highcharts-4.0.1/js/themes/grid-light.js",
+        "content/Scripts/Highcharts-4.0.1/js/themes/grid.js",
+        "content/Scripts/Highcharts-4.0.1/js/themes/sand-signika.js",
+        "content/Scripts/Highcharts-4.0.1/js/themes/skies.js",
+        "dotnet.highcharts.4.0.0.nupkg.sha512",
+        "dotnet.highcharts.nuspec",
+        "lib/DotNet.Highcharts.dll"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -13747,6 +13799,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "DotNet.Highcharts >= 4.0.0",
       "MailKit >= 2.0.1",
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.AspNetCore.Session >= 2.0.1",
@@ -13808,6 +13861,10 @@
             "target": "Package",
             "version": "4.3.0"
           },
+          "DotNet.Highcharts": {
+            "target": "Package",
+            "version": "4.0.0"
+          },
           "MySql.Data": {
             "target": "Package",
             "version": "6.10.6"
@@ -13837,5 +13894,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'DotNet.Highcharts 4.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "DotNet.Highcharts",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }

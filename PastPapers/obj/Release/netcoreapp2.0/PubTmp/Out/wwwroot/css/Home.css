@@ -9,7 +9,7 @@
 }
 
 .table-parent th {
-    background-color: #303E73;
+    background-color: #07D5E8;
     color: #fff;
 }
 
@@ -23,12 +23,13 @@
 
 .add-past-paper-button button {
     border-width: 0px;
-    background-color: #4158AD;
+    background-color: #07D5E8;
     color: #fff;
     padding: 10px;
     font-size: 15pt;
     margin-left: 50px;
     margin-top: 25px;
+    border-radius: 5px;
 }
 
 .add-past-paper-modal {
@@ -47,10 +48,25 @@
 
 .add-past-paper-modal-content {
     background-color: #fefefe;
+    border-radius: 5px;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    width: 50%;
+    animation-name: animatetop;
+    animation-duration: 0.6s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
 
 /* The Close Button */
@@ -66,4 +82,69 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.form-parent input[type=date], input[type=email], input[type=number], input[type=text] {
+    margin-top: 5px;
+    border-width: 2px;
+    border-color: deepskyblue;
+    color: rgb(0, 0, 0);
+    background-color: #fff;;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 15pt;
+    padding: 10px;
+}
+
+::-webkit-input-placeholder {
+    color: gray;
+}
+
+::-moz-placeholder {
+    color: gray;
+}
+
+::-ms-placeholder {
+    color: gray;
+}
+
+::placeholder {
+    color: gray;
+}
+
+.form-parent input[type=submit] {
+    border-width: 0px;
+    background-color: #07D5E8;
+    padding: 10px;
+    color: #fff;
+    margin-left: 5px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.input-parent {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.input-parent label {
+    font-weight: bold;
+}
+
+.number-of-papers-dropdown select {
+    border-width: 2px;
+    border-color: #07D5E8;
+    padding: 30px;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+    font-size: 15pt;
+    border-radius: 5px;
+}
+
+.number-of-papers-dropdown option {
+    border-width: 2px;
+    border-color: #07D5E8;
 }
