@@ -147,9 +147,9 @@
 
     //Graphing
     @{Model.GetGraphData();}
-    var graphDataNumberOfPapersJSON = JSON.parse('@Html.Raw(Model.GraphDataNumberOfPapersJSON)');
-    var xAxis = graphDataNumberOfPapersJSON.Dates;
-    var yAxis = graphDataNumberOfPapersJSON.NumberOfPapers;
+    var graphDataJSON = JSON.parse('@Html.Raw(Model.GraphDataJSON)');
+    var xAxis = graphDataJSON.Dates;
+    var yAxis = graphDataJSON.Percentages;
 
     var ctx = document.getElementById("numberOfPapersChart").getContext('2d');
     var myChart = new Chart(ctx, {

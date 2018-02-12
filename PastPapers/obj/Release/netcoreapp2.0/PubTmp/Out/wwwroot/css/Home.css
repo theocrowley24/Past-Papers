@@ -9,7 +9,6 @@
     border-radius: 5px;
     border: solid;
     border-width: 2px;
-    border-radius: 5px;
     border-color: #05A8FF;
 }
 
@@ -32,7 +31,7 @@
 }
 
 .add-past-paper-button button {
-    border-width: 0px;
+    border-width: 0;
     background-color: #07D5E8;
     color: #fff;
     padding: 10px;
@@ -126,16 +125,8 @@
     color: gray;
 }
 
-::-ms-placeholder {
-    color: gray;
-}
-
-::placeholder {
-    color: gray;
-}
-
 .form-parent input[type=submit] {
-    border-width: 0px;
+    border-width: 0;
     background-color: #07D5E8;
     padding: 10px;
     color: #fff;
@@ -162,9 +153,9 @@
     border-width: 2px;
     border-color: #07D5E8;
     padding: 30px;
-    padding-left: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     margin-bottom: 5px;
     font-size: 15pt;
     border-radius: 5px;
@@ -177,7 +168,7 @@
 
 .content-parent {
     position: relative;
-    margin-right: 20px;
+    width: 100%;
 }
 
 .graph-parent {
@@ -192,4 +183,14 @@
     border-radius: 5px;
     border-color: #05A8FF;
     background-color: #fff;
+}
+
+@media screen and (max-width: 1456px) {
+    .graph-parent {
+        width: 80% !important;
+    }
+
+    .table-parent {
+        width: 80% !important;
+    }
 }

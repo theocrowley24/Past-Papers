@@ -31,7 +31,7 @@ namespace PastPapers.Models
 
         public int? NumberOfPapersToDisplay { get; set; }
 
-        public string GraphDataNumberOfPapersJSON { get; set; }
+        public string GraphDataJSON { get; set; }
 
         public HomeModel(HttpContext httpContext)
         {
@@ -44,6 +44,9 @@ namespace PastPapers.Models
             GetPapers();
         }
 
+        /// <summary>
+        /// Gets the graph data neccessary for plotting graphs in the view
+        /// </summary>
         public void GetGraphData()
         {
 
@@ -52,21 +55,26 @@ namespace PastPapers.Models
             DateTime startDate = DateTime.Now.AddDays(-30);
 
             List<int> numberOfPapers = new List<int>();
+            List<double> percentages = new List<double>();
             List<string> dates = new List<string>();
 
             foreach (DateTime day in DateHelper.EachDay(startDate, DateTime.Now))
             {
-                numberOfPapers.Add(papers.Where(a => a.dateCompleted == day.ToString("yyyy-MM-dd")).Count());
+                var papersThisDay = papers.Where(a => a.dateCompleted == day.ToString("yyyy-MM-dd"));
+                numberOfPapers.Add(papersThisDay.Count());
                 dates.Add(day.ToString("yyyy-MM-dd"));
+
+                double totalPercentage = 0;
+                foreach(var paper in papersThisDay)
+                {
+                    totalPercentage += paper.percentage;
+                }
+
+                percentages.Add(totalPercentage / papersThisDay.Count());
             }
 
-            GraphDataNumberOfPapers graphDataNumberOfPapers = new GraphDataNumberOfPapers(dates, numberOfPapers);
-            GraphDataNumberOfPapersJSON = JsonConvert.SerializeObject(graphDataNumberOfPapers);
-
-            //Convert to JSON object
-            //Send to view
-            //Get a JS graph libary to process it into a graph
-            //Done
+            GraphData graphData = new GraphData(dates, numberOfPapers, percentages);
+            GraphDataJSON = JsonConvert.SerializeObject(graphData);
 
         }
 
@@ -99,7 +107,7 @@ namespace PastPapers.Models
             } catch (Exception ex)
             {
                 AddPaperFailed = true;
-                AddPaperErrorMessage = "Could not connect to server";
+                AddPaperErrorMessage = "Error when retrieving from server";
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
@@ -135,7 +143,6 @@ namespace PastPapers.Models
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                System.Diagnostics.Debug.WriteLine("Could not connect to database!");
             }
 
             return papers;
@@ -169,7 +176,6 @@ namespace PastPapers.Models
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                System.Diagnostics.Debug.WriteLine("Could not connect to database!");
             }
 
             return papers;

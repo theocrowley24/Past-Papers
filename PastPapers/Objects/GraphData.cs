@@ -5,15 +5,17 @@ using System.Threading.Tasks;
 
 namespace PastPapers.Objects
 {
-    public class GraphDataNumberOfPapers
+    public class GraphData
     {
         public List<string> Dates;
         public List<int> NumberOfPapers;
+        public List<double> Percentages;
 
-        public GraphDataNumberOfPapers(List<string> dates, List<int> numberOfPapers)
+        public GraphData(List<string> dates, List<int> numberOfPapers, List<double> percentages)
         {
             Dates = dates;
             NumberOfPapers = numberOfPapers;
+            Percentages = percentages;
         }
     }
 }
