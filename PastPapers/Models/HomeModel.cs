@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using PastPapers.Helpers;
 using System.Globalization;
+using Newtonsoft.Json;
 
 namespace PastPapers.Models
 {
@@ -26,10 +27,13 @@ namespace PastPapers.Models
         public string Grade { get; set; }
         public string DateCompleted { get; set; }
 
+        //Errors
         public bool AddPaperFailed { get; set; }
         public string AddPaperErrorMessage { get; set; }
 
         public int? NumberOfPapersToDisplay { get; set; }
+
+        public string GraphDataNumberOfPapersJSON { get; set; }
 
         public HomeModel(HttpContext httpContext)
         {
@@ -50,13 +54,16 @@ namespace PastPapers.Models
             DateTime startDate = DateTime.Now.AddDays(-30);
 
             List<int> numberOfPapers = new List<int>();
-            List<DateTime> dates = new List<DateTime>();
+            List<string> dates = new List<string>();
 
             foreach (DateTime day in DateHelper.EachDay(startDate, DateTime.Now))
             {
                 numberOfPapers.Add(papers.Where(a => a.dateCompleted == day.ToString("yyyy-MM-dd")).Count());
-                dates.Add(day);
+                dates.Add(day.ToString("yyyy-MM-dd"));
             }
+
+            GraphDataNumberOfPapers graphDataNumberOfPapers = new GraphDataNumberOfPapers(dates, numberOfPapers);
+            GraphDataNumberOfPapersJSON = JsonConvert.SerializeObject(graphDataNumberOfPapers);
 
             //Convert to JSON object
             //Send to view

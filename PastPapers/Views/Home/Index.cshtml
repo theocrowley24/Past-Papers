@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" href="~/css/Home.css" />
 
-@{Model.GetGraphData();}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
 
 <div id="addPastPaperModal" class="add-past-paper-modal">
     <div class="add-past-paper-modal-content">
@@ -66,53 +66,64 @@
     </div>
 }
 
-<div class="table-parent">
+<div class="content-parent">
 
-    <form asp-controller="home" asp-action="index" method="get">
-        <div class="number-of-papers-dropdown">
-            <select asp-for="NumberOfPapersToDisplay" onchange="this.form.submit()">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-            </select>
-        </div>
-    </form>
+    <div class="table-parent">
 
-    <table>
-        <tr>
-            <th>Subject</th>
-            <th>Topic/Module</th>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Mark</th>
-            <th>Max Mark</th>
-            <th>Percentage</th>
-            <th>Grade</th>
-            <th>Date Completed</th>
-        </tr>
-        @{
+        <form asp-controller="home" asp-action="index" method="get">
+            <div class="number-of-papers-dropdown">
+                <select asp-for="NumberOfPapersToDisplay" onchange="this.form.submit()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+        </form>
+
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Topic/Module</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Mark</th>
+                <th>Max Mark</th>
+                <th>Percentage</th>
+                <th>Grade</th>
+                <th>Date Completed</th>
+            </tr>
+            @{
             List<PastPaper> papers = Model.GetPapers();
             foreach (var paper in papers)
             {
-                <tr>
-                    <td>@Html.Raw(paper.subject)</td>
-                    <td>@Html.Raw(paper.module)</td>
-                    <td>@Html.Raw(paper.month)</td>
-                    <td>@Html.Raw(paper.year)</td>
-                    <td>@Html.Raw(paper.mark)</td>
-                    <td>@Html.Raw(paper.maxMark)</td>
-                    <td>@Html.Raw(paper.percentage)</td>
-                    <td>@Html.Raw(paper.grade)</td>
-                    <td>@Html.Raw(paper.dateCompleted)</td>
-                </tr>
+                    <tr>
+                        <td>@Html.Raw(paper.subject)</td>
+                        <td>@Html.Raw(paper.module)</td>
+                        <td>@Html.Raw(paper.month)</td>
+                        <td>@Html.Raw(paper.year)</td>
+                        <td>@Html.Raw(paper.mark)</td>
+                        <td>@Html.Raw(paper.maxMark)</td>
+                        <td>@Html.Raw(paper.percentage)</td>
+                        <td>@Html.Raw(paper.grade)</td>
+                        <td>@Html.Raw(paper.dateCompleted)</td>
+                    </tr>
             }
-        }
+            }
 
-    </table>
+        </table>
+    </div>
+
+
+    <div class="graph-parent">
+        <canvas id="numberOfPapersChart" width="900" height="600"></canvas>
+    </div>
+
 </div>
 
 <script>
+
+    //Modal control
 
     var pastPaperModal = document.getElementById("addPastPaperModal");
     var addButton = document.getElementById("addButton");
@@ -133,5 +144,50 @@
 
         }
     }
+
+    //Graphing
+    @{Model.GetGraphData();}
+    var graphDataNumberOfPapersJSON = JSON.parse('@Html.Raw(Model.GraphDataNumberOfPapersJSON)');
+    var xAxis = graphDataNumberOfPapersJSON.Dates;
+    var yAxis = graphDataNumberOfPapersJSON.NumberOfPapers;
+
+    var ctx = document.getElementById("numberOfPapersChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: 'Number of papers completed over past month',
+                data: yAxis,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 
 </script>

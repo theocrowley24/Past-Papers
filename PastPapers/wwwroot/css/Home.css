@@ -1,6 +1,7 @@
 ﻿.table-parent {
     overflow-x: auto;
     margin: 50px;
+    float: left;
 }
 
 .table-parent th, td{
@@ -147,4 +148,13 @@
 .number-of-papers-dropdown option {
     border-width: 2px;
     border-color: #07D5E8;
+}
+
+.content-parent {
+    position: relative;
+}
+
+.graph-parent {
+    float: right;
+    margin: 50px;
 }
