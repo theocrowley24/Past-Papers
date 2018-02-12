@@ -78,6 +78,9 @@ namespace PastPapers.Models
 
         }
 
+        /// <summary>
+        /// Adds a past paper into the database
+        /// </summary>
         public void AddPastPaper()
         {
             double percentage = (Mark / MaxMark) * 100;
