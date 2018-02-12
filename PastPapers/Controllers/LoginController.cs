@@ -44,7 +44,7 @@ namespace PastPapers.Controllers
 
                 if (loginModel.LoginSuccess)
                 {
-                    return RedirectToAction("Index", "Home", new HomeModel(httpContext));
+                    return RedirectToAction("Index", "Home");
                 } else
                 {
                     return View("Index", loginModel);

@@ -10,6 +10,11 @@
     border: solid;
     border-width: 2px;
     border-color: #05A8FF;
+    font-size: 0.7vw;
+}
+
+.table-parent table{
+    width: 100%;
 }
 
 .table-parent th, td{
@@ -58,6 +63,9 @@
 .add-past-paper-modal-content {
     background-color: #fefefe;
     border-radius: 5px;
+    border: solid;
+    border-width: 2px;
+    border-color: deepskyblue;
     margin: auto;
     padding: 20px;
     width: 50%;
@@ -65,7 +73,7 @@
     max-height: 400px;
     font-size: 2vw;
     animation-name: animatetop;
-    animation-duration: 0.6s;
+    animation-duration: 1s;
 }
 
 /* Add Animation */
@@ -192,5 +200,24 @@
 
     .table-parent {
         width: 80% !important;
+        font-size: 10pt;
+    }
+
+    .table-parent th, td{
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 556px){
+    .table-parent{
+        margin-left: 5px;
+    }
+
+    .graph-parent {
+        margin-left: 5px;
+    }
+
+    add-past-paper-button button {
+        margin-left: 5px;
     }
 }

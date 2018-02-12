@@ -30,6 +30,7 @@ namespace PastPapers.Models
         public string AddPaperErrorMessage { get; set; }
 
         public int? NumberOfPapersToDisplay { get; set; }
+        public string Filter { get; set; }
 
         public string GraphDataJSON { get; set; }
 
@@ -70,7 +71,13 @@ namespace PastPapers.Models
                     totalPercentage += paper.percentage;
                 }
 
-                percentages.Add(totalPercentage / papersThisDay.Count());
+                if (papersThisDay.Count() == 0)
+                {
+                    percentages.Add(0);
+                } else
+                {
+                    percentages.Add(totalPercentage / papersThisDay.Count());
+                }                
             }
 
             GraphData graphData = new GraphData(dates, numberOfPapers, percentages);
@@ -83,7 +90,7 @@ namespace PastPapers.Models
         /// </summary>
         public void AddPastPaper()
         {
-            double percentage = (Mark / MaxMark) * 100;
+            double percentage = ((double) Mark / (double) MaxMark) * 100;
 
             try
             {
@@ -148,7 +155,32 @@ namespace PastPapers.Models
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
 
-            return papers;
+            List<PastPaper> sortedPapers = papers;
+
+            if (Filter == "Subject")
+            {
+                sortedPapers = papers.OrderBy(a => a.subject).ToList();
+            } else if (Filter == "Module")
+            {
+                sortedPapers = papers.OrderBy(a => a.module).ToList();
+            } else if (Filter == "Year")
+            {
+                sortedPapers = papers.OrderBy(a => a.year).ToList();
+            } else if (Filter == "Mark")
+            {
+                sortedPapers = papers.OrderBy(a => a.mark).ToList();
+            } else if (Filter == "Percentage")
+            {
+                sortedPapers = papers.OrderBy(a => a.percentage).ToList();
+            } else if (Filter == "Grade")
+            {
+                sortedPapers = papers.OrderBy(a => a.grade).ToList();
+            } else if (Filter == "DateCompleted")
+            {
+                sortedPapers = papers.OrderBy(a => a.dateCompleted).ToList();
+            }
+
+            return sortedPapers;
         }
 
         public List<PastPaper> GetAllPapers()

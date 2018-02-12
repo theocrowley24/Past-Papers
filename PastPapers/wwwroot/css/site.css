@@ -14,8 +14,8 @@ body {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* Carousel */
@@ -52,11 +52,27 @@ body {
     z-index: 9;
 }
 
-.nav-bar p {
+.nav-bar h1 {
     margin-left: 20px;
     font-size: 20pt;
     line-height: 50px;
     color: #fff;
+    float: left;
+}
+
+.nav-bar p {
+    float: right;
+    margin-right: 20px;
+    line-height: 50px;
+}
+
+.nav-bar a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-bar a:hover {
+    text-decoration: underline;
 }
 
 /* The alert message box */

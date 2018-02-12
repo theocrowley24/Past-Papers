@@ -35,6 +35,12 @@ namespace PastPapers.Controllers
             }
         }
 
+        public IActionResult Logout()
+        {
+            httpContext.Session.Clear();
+            return RedirectToAction("Index", "Login");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddPastPaper(HomeModel homeModel = null)

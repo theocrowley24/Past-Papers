@@ -71,7 +71,7 @@
     <div class="table-parent">
 
         <form asp-controller="home" asp-action="index" method="post">
-            <div class="number-of-papers-dropdown">
+            <div class="number-of-papers-dropdown" style="display: inline-block; float: left;">
                 <select asp-for="NumberOfPapersToDisplay" onchange="this.form.submit()">
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -79,49 +79,65 @@
                     <option value="50">50</option>
                 </select>
             </div>
-        </form>
 
-        <table>
-            <tr>
-                <th>Subject</th>
-                <th>Topic/Module</th>
-                <th>Month</th>
-                <th>Year</th>
-                <th>Mark</th>
-                <th>Max Mark</th>
-                <th>Percentage</th>
-                <th>Grade</th>
-                <th>Date Completed</th>
-            </tr>
-            @{
+            <div class="number-of-papers-dropdown" style="display: inline-block; float: right;">
+            <select asp-for="Filter" onchange="this.form.submit()">
+                <option value="Subject">Subject</option>
+                <option value="Module">Module</option>
+                <option value="Year">Year</option>
+                <option value="Mark">Mark</option>
+                <option value="Percentage">Percentage</option>
+                <option value="Grade">Grade</option>
+                <option value="DateCompleted">Date Completed</option>
+            </select>
+    </div>
+    </form>
+
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Topic/Module</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Mark</th>
+            <th>Max Mark</th>
+            <th>Percentage</th>
+            <th>Grade</th>
+            <th>Date Completed</th>
+        </tr>
+        @{
             List<PastPaper> papers = Model.GetPapers();
             foreach (var paper in papers)
             {
-                    <tr>
-                        <td>@Html.Raw(paper.subject)</td>
-                        <td>@Html.Raw(paper.module)</td>
-                        <td>@Html.Raw(paper.month)</td>
-                        <td>@Html.Raw(paper.year)</td>
-                        <td>@Html.Raw(paper.mark)</td>
-                        <td>@Html.Raw(paper.maxMark)</td>
-                        <td>@Html.Raw(paper.percentage)</td>
-                        <td>@Html.Raw(paper.grade)</td>
-                        <td>@Html.Raw(paper.dateCompleted)</td>
-                    </tr>
+                <tr>
+                    <td>@Html.Raw(paper.subject)</td>
+                    <td>@Html.Raw(paper.module)</td>
+                    <td>@Html.Raw(paper.month)</td>
+                    <td>@Html.Raw(paper.year)</td>
+                    <td>@Html.Raw(paper.mark)</td>
+                    <td>@Html.Raw(paper.maxMark)</td>
+                    <td>@Html.Raw(paper.percentage)%</td>
+                    <td>@Html.Raw(paper.grade)</td>
+                    <td>@Html.Raw(paper.dateCompleted)</td>
+                </tr>
             }
-            }
+        }
 
-        </table>
-    </div>
+    </table>
+</div>
 
 
     <div class="graph-parent">
+        <button onclick="showNumberOfPapersGraph()">Papers Completed</button>
+        <button onclick="showPercentageGraph()">Percentages</button>
         <canvas id="numberOfPapersChart" width="600" height="600"></canvas>
     </div>
 
 </div>
 
 <script>
+
+    
 
     //Modal control
 
@@ -148,45 +164,89 @@
     //Graphing
     @{Model.GetGraphData();}
     var graphDataJSON = JSON.parse('@Html.Raw(Model.GraphDataJSON)');
-    var xAxis = graphDataJSON.Dates;
-    var yAxis = graphDataJSON.Percentages;
 
-    var ctx = document.getElementById("numberOfPapersChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: xAxis,
-            datasets: [{
-                label: 'Number of papers completed over past month',
-                data: yAxis,
-                backgroundColor: [
-                    'rgba(7, 213, 232, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(7, 94, 232 ,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+    showNumberOfPapersGraph();
+
+    function showNumberOfPapersGraph() {
+        var ctx = document.getElementById("numberOfPapersChart").getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: graphDataJSON.Dates,
+                datasets: [{
+                    label: 'Number of papers completed over past month',
+                    data: graphDataJSON.NumberOfPapers,
+                    backgroundColor: [
+                        'rgba(7, 213, 232, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(7, 94, 232 ,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
+        });
+    }
+
+    function showPercentageGraph() {
+        var ctx = document.getElementById("numberOfPapersChart").getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: graphDataJSON.Dates,
+                datasets: [{
+                    label: 'Average percentage over past 30 days',
+                    data: graphDataJSON.Percentages,
+                    backgroundColor: [
+                        'rgba(7, 213, 232, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(7, 94, 232 ,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
 
 </script>

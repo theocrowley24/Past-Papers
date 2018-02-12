@@ -9,3 +9,6 @@ C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Re
 C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.AssemblyInfo.cs
 C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.dll
 C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\obj\Release\netcoreapp2.0\PastPapers.pdb
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\bin\Release\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\bin\Release\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Theo\Documents\Visual Studio 2017\Projects\PastPapers\PastPapers\bin\Release\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
