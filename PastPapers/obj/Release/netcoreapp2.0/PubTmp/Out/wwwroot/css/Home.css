@@ -1,6 +1,16 @@
 ﻿.table-parent {
+    width: 50%;
+    min-width: 300px;
     overflow-x: auto;
     margin: 50px;
+    float: left;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: #05A8FF;
 }
 
 .table-parent th, td{
@@ -28,7 +38,7 @@
     padding: 10px;
     font-size: 15pt;
     margin-left: 50px;
-    margin-top: 25px;
+    margin-top: 75px;
     border-radius: 5px;
 }
 
@@ -52,8 +62,11 @@
     margin: auto;
     padding: 20px;
     width: 50%;
+    min-width: 400px;
+    max-height: 400px;
+    font-size: 2vw;
     animation-name: animatetop;
-    animation-duration: 0.6s
+    animation-duration: 0.6s;
 }
 
 /* Add Animation */
@@ -89,11 +102,20 @@
     border-width: 2px;
     border-color: deepskyblue;
     color: rgb(0, 0, 0);
-    background-color: #fff;;
+    background-color: #fff;
     border-radius: 5px;
     border-style: solid;
-    font-size: 15pt;
+    font-size: 2vw;
     padding: 10px;
+}
+
+@media screen and (min-width: 1000px) {
+    .form-parent input[type=date], input[type=email], input[type=number], input[type=text] {
+        font-size: 12pt;
+    }
+    .input-parent label {
+        font-size: 12pt;
+    }
 }
 
 ::-webkit-input-placeholder {
@@ -128,6 +150,10 @@
     margin-left: 5px;
 }
 
+.input-parent input{
+    width: 80%;
+}
+
 .input-parent label {
     font-weight: bold;
 }
@@ -147,4 +173,23 @@
 .number-of-papers-dropdown option {
     border-width: 2px;
     border-color: #07D5E8;
+}
+
+.content-parent {
+    position: relative;
+    margin-right: 20px;
+}
+
+.graph-parent {
+    float: left;
+    margin: 50px;
+    padding: 20px;
+    width: 30%;
+    height: 40%;
+    min-width: 300px;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: #05A8FF;
+    background-color: #fff;
 }

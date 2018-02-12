@@ -1,6 +1,4 @@
-﻿using DotNet.Highcharts.Helpers;
-using DotNet.Highcharts.Options;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using MySql.Data.MySqlClient;
 using PastPapers.Objects;
 using System;

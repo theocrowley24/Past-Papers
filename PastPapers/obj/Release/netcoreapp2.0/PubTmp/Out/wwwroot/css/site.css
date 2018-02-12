@@ -8,7 +8,7 @@
 
 body {
     padding-bottom: 20px;
-    background-color: #fff;
+    background-color: #f4f9ff;
 }
 
 /* Wrapping element */
@@ -48,6 +48,8 @@ body {
     width: 100%;
     background-color: #05A8FF;
     margin: 0;
+    position: fixed;
+    z-index: 9;
 }
 
 .nav-bar p {
@@ -88,4 +90,14 @@ body {
 
 footer p {
     margin-left: 50px;
+}
+
+#footer {
+    display: block;
+    text-align: center;
+    font-size: 0.75em;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    position: fixed;
 }

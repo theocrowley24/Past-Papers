@@ -7,7 +7,7 @@ namespace PastPapers.Objects
 {
     public class GraphDataPercentages
     {
-        public List<string> dates { get; set; }
-        public List<double> percentages { get; set; }
+        public List<string> Dates { get; set; }
+        public List<double> Percentages { get; set; }
     }
 }
